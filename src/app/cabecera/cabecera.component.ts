@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CabeceraComponent implements OnInit {
 
-titulo = "Gestión de Pedidos";
-
+  titulo = 'Gestión de Pedidos';  
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

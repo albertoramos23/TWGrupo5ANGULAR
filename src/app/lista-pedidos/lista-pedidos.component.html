@@ -5,19 +5,23 @@
     <div *ngIf="pedidos.length == 0">No hay pedidos</div>
     
     <ul class="list-group">
-        <div *ngFor="let p of pedidos">
-            <li  class="list-group-item {{ ! p.entregado ? 'disabled': ''}}"  >    
-               <app-item-pedido (entregaRealizada)="onTerminoEntrega($event)"[id]="p.id" descripcion="{{p.desc}}" 
-                   [entregado]="p.entregado"></app-item-pedido>   
-            </li>
-        </div>
-        
-        </ul>
-        
+    <div *ngFor="let p of pedidos">
+        <li  class="list-group-item {{ p.entregado ? 'disabled': ''}}"  >  
+           <a [routerLink]="['/pedido',p.id]">
+           <app-item-pedido
+               (entregaRealizada)="onTerminoEntrega($event)" 
+               [id]="p.id" 
+               descripcion="{{p.desc}}" 
+               [entregado]="p.entregado"></app-item-pedido>   
+            </a>
+    
+        </li>
+    </div>
+    
+    </ul>
     
     <button class="btn btn-primary" (click)="onAltaPedido()"
          [disabled]="! modoNuevo">Alta Pedido</button>
     
     
     </div>
-    

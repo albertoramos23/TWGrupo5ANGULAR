@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Pedido } from 'src/app/model/pedido';
+import { LogService } from 'src/app/servicios/log.service';
+import { PedidosService } from 'src/app/servicios/pedidos.service';
 
 @Component({
   selector: 'app-pedido',
@@ -9,14 +12,20 @@ import { Pedido } from 'src/app/model/pedido';
 export class PedidoComponent implements OnInit {
 
   pedido : Pedido;
+  
 
-  constructor() { 
-    this.pedido = {id:1,
+  constructor( private log:LogService,
+    private route:ActivatedRoute,
+    private pedidoService: PedidosService) { 
+    
+ /*   this.pedido = {id:1,
       desc:'Zapatos',
       entregado: true,
       fechaPedido:new Date(),
       user:'Luis'}
-
+*/
+     let id = this.route.snapshot.params['id'];
+     this.pedido = this.pedidoService.getPedido(id);
   }
 
   ngOnInit(): void {

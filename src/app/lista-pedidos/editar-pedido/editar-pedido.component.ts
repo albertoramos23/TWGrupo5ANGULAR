@@ -8,7 +8,7 @@ import { Pedido } from 'src/app/model/pedido';
 })
 export class EditarPedidoComponent implements OnInit {
 
-  pedido:Pedido;
+  pedido: Pedido;
   
   constructor() {
     this.pedido = {id:0, desc:'', user:'Luis',fechaPedido: new Date(), entregado:false};
@@ -25,5 +25,5 @@ export class EditarPedidoComponent implements OnInit {
   }
 
 
-
 }
+
