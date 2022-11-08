@@ -1,18 +1,23 @@
-<p>lista-pedidos works!</p>
+<div [ngClass]="estadoListadoPedidos">
 
-
-<div *ngIf="pedidos.length() ==0">No hay pedidos</div>
-
-<ul class="list-group">
-    <div *ngFor="let p of pedidos">
-        <li  class="list-group-item
-         {{ p.entregado ? 'disabled': ''}}"  >
-         {{ p.id }}  {{ p.desc }} - {{ p.fechaPedido | date: 'short':'UTC':'es'}
-
-        </li>
-    </div>
-    </ul>
+    <h2>Lista de Pedidos</h2>
     
-
-
-<button class="btn btn-primary" (click)="onAltaPedido()">Alta Pedido</button>
+    <div *ngIf="pedidos.length == 0">No hay pedidos</div>
+    
+    <ul class="list-group">
+        <div *ngFor="let p of pedidos">
+            <li  class="list-group-item {{ ! p.entregado ? 'disabled': ''}}"  >    
+               <app-item-pedido (entregaRealizada)="onTerminoEntrega($event)"[id]="p.id" descripcion="{{p.desc}}" 
+                   [entregado]="p.entregado"></app-item-pedido>   
+            </li>
+        </div>
+        
+        </ul>
+        
+    
+    <button class="btn btn-primary" (click)="onAltaPedido()"
+         [disabled]="! modoNuevo">Alta Pedido</button>
+    
+    
+    </div>
+    
